@@ -3,6 +3,10 @@ rosalind
 ====
 
 
+.. image:: https://github.com/alyssflynn/rosalind/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/alyssflynn/rosalind/actions/workflows/test.yml
+    :alt: Test Status
+
 .. image:: https://img.shields.io/pypi/v/rosalind.svg
         :target: https://pypi.python.org/pypi/rosalind
 
