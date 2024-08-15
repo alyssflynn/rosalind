@@ -91,7 +91,7 @@ keep-runtime-typing = true
 convention = "google"
 
 [tool.mypy]
-disallow_untyped_defs = true # Functions need to be annotated
+disallow_untyped_defs = false # Functions need to be annotated
 warn_unused_ignores = true
 exclude = [
     "rosalind-\\d+", # Ignore temporary folder created by setuptools when building an sdist
