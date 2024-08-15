@@ -8,7 +8,7 @@ authors = [
     {name = "Alyss Flynn", email = "alyss.flynn@me.com"},
 ]
 description = "Package with some basic genetics functions."
-readme = "README.md"
+readme = "README.rst"
 requires-python = ">=3.8"
 dynamic = ["version"]
 dependencies = [
