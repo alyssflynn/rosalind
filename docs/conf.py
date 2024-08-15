@@ -12,6 +12,7 @@ author = 'Alyss Flynn'
 
 from importlib.metadata import version
 release = version("rosalind")
+version = release
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
