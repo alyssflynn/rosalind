@@ -7,22 +7,22 @@ on:
         branches: [ main, master ]
 
 jobs:
-    build-test:
-        runs-on: ubuntu-latest
+    test:
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                os: [ubuntu-latest, windows-latest, macos-latest]
+                python-version: ['3.9', '3.10', '3.11']
         steps:
             - uses: actions/checkout@v4
-            - name: Set up Python
+            - name: Set up Python $${{ matrix.python-version }}
               uses: actions/setup-python@v5
               with:
-                python-version: '3.x'
+                python-version: ${{ matrix.python-version }}
             - name: Install dependencies
               run: |
                 python -m pip install --upgrade pip
-                pip install -e .\[dev\]
-            - name: Linting
-              run: |
-                tox run -e lint
-            - name: Testing
-              run: |
-                tox run -e test
+                pip install tox tox-gh-actions
+            - name: Test with tox
+              run: tox
             
