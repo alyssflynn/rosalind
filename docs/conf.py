@@ -10,8 +10,8 @@ project = 'rosalind'
 copyright = '2024, Alyss Flynn'
 author = 'Alyss Flynn'
 
-from importlib.metadata import version
-release = version("rosalind")
+from importlib.metadata import version as metadata_version
+release = metadata_version("rosalind")
 version = release
 
 # -- General configuration ---------------------------------------------------
