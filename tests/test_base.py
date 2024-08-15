@@ -1,3 +1,5 @@
+import pytest
+
 from rosalind import base_count_str, complement, count_bases, reverse_complement, transcribe
 
 
@@ -18,6 +20,14 @@ def test_transcribe():
 
 def test_complement():
     assert complement("AAAACCCGGT") == "TTTTGGGCCA"
+
+
+# @pytest.mark.parametrize("test_input_dna,expected_complement", [
+#     ("GATTACA", "CTAATGT"),
+#     ("AAAACCCGGT", "TTTTGGGCCA")
+# ])
+# def test_complement_many(test_input_dna, expected_complement):
+#     assert complement(test_input_dna) == expected_complement
 
 
 def test_reverse_complement():

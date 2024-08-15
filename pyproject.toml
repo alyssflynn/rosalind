@@ -50,6 +50,7 @@ src = ["src"]
 extend-exclude = [
     "conf.py",
     "build/",
+    "tests/",
 ]
 target-version = "py39"
 
