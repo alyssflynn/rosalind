@@ -1,4 +1,4 @@
-import pytest # type: ignore
+import pytest
 
 from rosalind import base_count_str, complement, count_bases, reverse_complement, transcribe, recurrence_relation, gc_content, parse_fasta, clean_sequence, max_gc_fasta, count_point_mutations, probability_dominant, translate_rna, find_motif, consensus_profile, fasta_consensus_profile
 

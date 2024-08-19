@@ -85,7 +85,7 @@ def max_gc_fasta(fasta: str) -> tuple[str, float]:
     https://rosalind.info/problems/gc/
     """
     fasta_gc = {label: round(gc_content(seq), 5) for label, seq in parse_fasta(fasta).items()}
-    label = max(fasta_gc.keys(), key=fasta_gc.get)
+    label = max(fasta_gc.keys(), key=fasta_gc.__getitem__)
     return label, fasta_gc[label]
 
 
@@ -137,7 +137,7 @@ def translate_rna(rna: str) -> str:
     return codons
 
 
-def find_motif(seq: str, motif: str) -> tuple[int]:
+def find_motif(seq: str, motif: str) -> tuple[int, ...]:
     """Returns the starting potions of each instance of `motif` in `seq`."""
 
     def scan(seq: str, motif: str) -> Iterable[int]:
@@ -169,7 +169,7 @@ def consensus_profile(*seqs: str) -> tuple[str, dict]:
             profile[nuc][i] += 1
 
         counts = {nuc: profile[nuc][i] for nuc in profile}
-        max_nuc = max(counts, key=counts.get)
+        max_nuc = max(counts, key=counts.__getitem__)
         consensus += max_nuc
 
     return consensus, profile
