@@ -156,7 +156,7 @@ def consensus_profile(*seqs: str) -> tuple[str, dict]:
 
     A consensus string is a string formed by taking the most common symbol at each position.
 
-    A profile matrix is a 4×n matrix P in which P1,j represents the number of times that 'A' occurs in the jth position
+    A profile matrix is a 4xn matrix P in which P1,j represents the number of times that 'A' occurs in the jth position
     of one of the strings, P2,j represents the number of times that C occurs in the jth position, and so on.
     """
     size = len(seqs[0])
