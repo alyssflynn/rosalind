@@ -76,10 +76,7 @@ def parse_fasta(fasta: str) -> dict[str, str]:
 
     https://rosalind.info/problems/gc/
     """
-    return {
-        label: clean_sequence(seq)
-        for label, seq in re.findall(FASTA_PAT, fasta)
-    }
+    return {label: clean_sequence(seq) for label, seq in re.findall(FASTA_PAT, fasta)}
 
 
 def max_gc_fasta(fasta: str) -> tuple[str, float]:
@@ -87,10 +84,7 @@ def max_gc_fasta(fasta: str) -> tuple[str, float]:
 
     https://rosalind.info/problems/gc/
     """
-    fasta_gc = {
-        label: round(gc_content(seq), 5)
-        for label, seq in parse_fasta(fasta).items()
-    }
+    fasta_gc = {label: round(gc_content(seq), 5) for label, seq in parse_fasta(fasta).items()}
     label = max(fasta_gc.keys(), key=fasta_gc.get)
     return label, fasta_gc[label]
 
@@ -119,15 +113,15 @@ def probability_dominant(k: int, m: int, n: int) -> float:
     n: homozygous recessive individuals
 
     https://rosalind.info/problems/iprb/
-    https://stackoverflow.com/questions/25119106/rosalind-mendels-first-law-iprb 
+    https://stackoverflow.com/questions/25119106/rosalind-mendels-first-law-iprb
     """
-    #calculate the probability of recessive traits only
-    total = k+m+n
-    two_recess = (n/total)*((n-1)/(total-1))
-    two_hetero = (m/total)*((m-1)/(total-1))
-    het_recess = (n/total)*(m/(total-1)) + (m/total)*(n/(total-1))
-    recess_prob = two_recess + two_hetero*1/4 + het_recess*1/2
-    dom_prob = 1-recess_prob # take the complement
+    # calculate the probability of recessive traits only
+    total = k + m + n
+    two_recess = (n / total) * ((n - 1) / (total - 1))
+    two_hetero = (m / total) * ((m - 1) / (total - 1))
+    het_recess = (n / total) * (m / (total - 1)) + (m / total) * (n / (total - 1))
+    recess_prob = two_recess + two_hetero * 1 / 4 + het_recess * 1 / 2
+    dom_prob = 1 - recess_prob  # take the complement
     return round(dom_prob, 5)
 
 
@@ -139,17 +133,18 @@ def translate_rna(rna: str) -> str:
     rna = clean_sequence(rna)
     codons = ""
     for i in range(3, len(rna), 3):
-        codons += RNA_CODON_TABLE[rna[i-3:i]]
+        codons += RNA_CODON_TABLE[rna[i - 3 : i]]
     return codons
 
 
 def find_motif(seq: str, motif: str) -> tuple[int]:
     """Returns the starting potions of each instance of `motif` in `seq`."""
+
     def scan(seq: str, motif: str) -> Iterable[int]:
         msize = len(motif)
         i = 0
-        while i+msize <= len(seq):
-            if seq[i:i+msize] == motif:
+        while i + msize <= len(seq):
+            if seq[i : i + msize] == motif:
                 yield i + 1
             i += 1
 
@@ -165,7 +160,7 @@ def consensus_profile(*seqs: str) -> tuple[str, dict]:
     of one of the strings, P2,j represents the number of times that C occurs in the jth position, and so on.
     """
     size = len(seqs[0])
-    profile = {nuc: [0]*size for nuc in "ACGT"}
+    profile = {nuc: [0] * size for nuc in "ACGT"}
     consensus = ""
 
     for i in range(size):

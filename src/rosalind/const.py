@@ -68,5 +68,5 @@ RNA_CODON_TABLE = {
     "UUA": "L",
     "UUC": "F",
     "UUG": "L",
-    "UUU": "F"
+    "UUU": "F",
 }
